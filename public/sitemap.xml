@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://beltransoil-service.by/</loc>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://beltransoil-service.by/" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://beltransoil-service.by/en" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://beltransoil-service.by/" />
+    <loc>https://qkipa00.github.io/beltransoil-service/</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://qkipa00.github.io/beltransoil-service/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://qkipa00.github.io/beltransoil-service/en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://qkipa00.github.io/beltransoil-service/" />
   </url>
   <url>
-    <loc>https://beltransoil-service.by/en</loc>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://beltransoil-service.by/" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://beltransoil-service.by/en" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://beltransoil-service.by/" />
+    <loc>https://qkipa00.github.io/beltransoil-service/en</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://qkipa00.github.io/beltransoil-service/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://qkipa00.github.io/beltransoil-service/en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://qkipa00.github.io/beltransoil-service/" />
   </url>
 </urlset>

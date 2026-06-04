@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://beltransoil-service.by/sitemap.xml
+Sitemap: https://qkipa00.github.io/beltransoil-service/sitemap.xml

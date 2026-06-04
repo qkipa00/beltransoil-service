@@ -7,15 +7,18 @@ type Props = {
 };
 
 const props = Astro.props;
-const siteUrl = Astro.site ?? new URL("https://beltransoil-service.by");
-const canonicalUrl = new URL(props.content.seo.canonicalPath, siteUrl).toString();
-const alternateUrl = new URL(props.content.alternateLanguageUrl, siteUrl).toString();
+const siteUrl = Astro.site ?? new URL("https://qkipa00.github.io");
+const basePath = import.meta.env.BASE_URL;
+const normalizedBasePath = basePath.endsWith("/") ? basePath : `${basePath}/`;
+const withBase = (path: string) => `${normalizedBasePath}${path.replace(/^\/+/, "")}`;
+const canonicalUrl = new URL(withBase(props.content.seo.canonicalPath), siteUrl).toString();
+const alternateUrl = new URL(withBase(props.content.alternateLanguageUrl), siteUrl).toString();
 const ogLocale = props.content.language === "ru" ? "ru_BY" : "en_US";
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: props.content.contacts.company,
-  url: new URL("/", siteUrl).toString(),
+  url: new URL(withBase("/"), siteUrl).toString(),
   email: props.content.contacts.email,
   telephone: props.content.contacts.phone,
   address: {
@@ -39,8 +42,8 @@ const structuredData = {
     <meta name="theme-color" content="#0c1322" />
     <link rel="canonical" href={canonicalUrl} />
     <link rel="alternate" hreflang={props.content.language === "ru" ? "en" : "ru"} href={alternateUrl} />
-    <link rel="alternate" hreflang="x-default" href={new URL("/", siteUrl).toString()} />
-    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="alternate" hreflang="x-default" href={new URL(withBase("/"), siteUrl).toString()} />
+    <link rel="manifest" href={withBase("/site.webmanifest")} />
     <meta property="og:title" content={props.content.seo.title} />
     <meta property="og:description" content={props.content.seo.description} />
     <meta property="og:type" content="website" />
