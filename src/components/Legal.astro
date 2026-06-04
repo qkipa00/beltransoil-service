@@ -1,0 +1,33 @@
+---
+import type { SiteContent } from "../data/content";
+
+type Props = {
+  content: SiteContent;
+};
+
+const props = Astro.props;
+---
+
+<section class="section section-muted" id="legal">
+  <div class="section-heading">
+    <p class="eyebrow eyebrow-underline">{props.content.legal.eyebrow}</p>
+    <h2>{props.content.legal.title}</h2>
+  </div>
+
+  <div class="legal-block">
+    <div class="legal-badge">
+      <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+        <path d="M7 1l6 3v4c0 3.5-2.5 5.5-6 6.5-3.5-1-6-3-6-6.5V4z" />
+        <path d="M5 7l1.5 1.5L9.5 5" />
+      </svg>
+      <span>{props.content.language === "ru" ? "Регулируемая деятельность" : "Regulated activity"}</span>
+    </div>
+    <p>{props.content.legal.description}</p>
+    <p class="legal-label">{props.content.language === "ru" ? "Мы обеспечиваем:" : "We provide:"}</p>
+    <ul>
+      {props.content.legal.items.map((item) => (
+        <li>{item}</li>
+      ))}
+    </ul>
+  </div>
+</section>

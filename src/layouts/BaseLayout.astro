@@ -1,0 +1,113 @@
+---
+import "../styles/global.css";
+import type { SiteContent } from "../data/content";
+
+type Props = {
+  content: SiteContent;
+};
+
+const props = Astro.props;
+const siteUrl = Astro.site ?? new URL("https://beltransoil-service.by");
+const canonicalUrl = new URL(props.content.seo.canonicalPath, siteUrl).toString();
+const alternateUrl = new URL(props.content.alternateLanguageUrl, siteUrl).toString();
+const ogLocale = props.content.language === "ru" ? "ru_BY" : "en_US";
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: props.content.contacts.company,
+  url: new URL("/", siteUrl).toString(),
+  email: props.content.contacts.email,
+  telephone: props.content.contacts.phone,
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: props.content.language === "ru" ? "Брест" : "Brest",
+    addressCountry: "BY",
+  },
+  areaServed: "Belarus",
+  description: props.content.seo.description,
+};
+---
+
+<!doctype html>
+<html lang={props.content.language}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={props.content.seo.description} />
+    <meta name="keywords" content={props.content.seo.keywords} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#0c1322" />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="alternate" hreflang={props.content.language === "ru" ? "en" : "ru"} href={alternateUrl} />
+    <link rel="alternate" hreflang="x-default" href={new URL("/", siteUrl).toString()} />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta property="og:title" content={props.content.seo.title} />
+    <meta property="og:description" content={props.content.seo.description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:site_name" content={props.content.contacts.company} />
+    <meta property="og:locale" content={ogLocale} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={props.content.seo.title} />
+    <meta name="twitter:description" content={props.content.seo.description} />
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(structuredData)} />
+    <title>{props.content.seo.title}</title>
+  </head>
+  <body>
+    <slot />
+    <script is:inline>
+      document.querySelectorAll(".mobile-menu-button").forEach((button) => {
+        const navId = button.getAttribute("aria-controls");
+        const nav = navId ? document.getElementById(navId) : null;
+        if (!nav) return;
+
+        button.addEventListener("click", () => {
+          const isOpen = nav.classList.toggle("open");
+          button.setAttribute("aria-expanded", String(isOpen));
+        });
+
+        nav.querySelectorAll('a[href^="#"]').forEach((link) => {
+          link.addEventListener("click", () => {
+            nav.classList.remove("open");
+            button.setAttribute("aria-expanded", "false");
+          });
+        });
+      });
+
+      document.querySelectorAll(".contact-form").forEach((form) => {
+        const startedAt = form.querySelector("[data-started-at]");
+        const fields = form.querySelector(".form-fields");
+        const success = form.querySelector(".form-success");
+        const error = form.querySelector(".form-error");
+        const started = Date.now();
+        if (startedAt) startedAt.value = String(started);
+
+        form.addEventListener("submit", (event) => {
+          event.preventDefault();
+          if (error) error.textContent = "";
+
+          const honeypot = form.querySelector('input[name="website"]');
+          if (honeypot && honeypot.value.trim() !== "") return;
+
+          if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+          }
+
+          if (Date.now() - started < 2500) {
+            if (error) {
+              error.textContent =
+                document.documentElement.lang === "ru"
+                  ? "Проверьте поля и отправьте заявку еще раз."
+                  : "Please check the fields and submit the request again.";
+            }
+            return;
+          }
+
+          fields?.classList.add("hide");
+          success?.classList.add("show");
+        });
+      });
+    </script>
+  </body>
+</html>

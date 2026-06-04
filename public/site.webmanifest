@@ -1,0 +1,10 @@
+{
+  "name": "BelTransOil-Service",
+  "short_name": "BTO Service",
+  "description": "Fuel card and cashless refueling support for foreign carriers in Belarus.",
+  "lang": "ru",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f6f7f4",
+  "theme_color": "#111827"
+}

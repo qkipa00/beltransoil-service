@@ -1,0 +1,15 @@
+---
+import type { SiteContent } from "../data/content";
+
+type Props = {
+  content: SiteContent;
+};
+
+const props = Astro.props;
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <p>© {currentYear} {props.content.contacts.company}</p>
+  <p>{props.content.contacts.address}</p>
+</footer>

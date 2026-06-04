@@ -1,0 +1,29 @@
+---
+import type { SiteContent } from "../data/content";
+
+type Props = {
+  content: SiteContent;
+};
+
+const props = Astro.props;
+---
+
+<section class="section section-muted" id="process">
+  <div class="section-heading">
+    <p class="eyebrow eyebrow-underline">{props.content.process.eyebrow}</p>
+    <h2>{props.content.process.title}</h2>
+    <p>{props.content.process.description}</p>
+  </div>
+
+  <div class="process-list">
+    {props.content.process.steps.map((step, index) => (
+      <article class="process-step">
+        <span class="step-num">{String(index + 1).padStart(2, "0")}</span>
+        <div>
+          <h3>{step.title}</h3>
+          <p>{step.description}</p>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>

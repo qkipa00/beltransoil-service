@@ -1,0 +1,56 @@
+---
+import type { SiteContent } from "../data/content";
+
+type Props = {
+  content: SiteContent;
+};
+
+const props = Astro.props;
+---
+
+<header class="site-header">
+  <a class="brand" href={props.content.language === "ru" ? "/" : "/en"} aria-label={props.content.contacts.company}>
+    <svg class="brand-mark" viewBox="0 0 50 38" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <ellipse cx="25" cy="19" rx="23" ry="17" stroke="url(#brand-oval)" stroke-width="2.2" fill="none" />
+      <ellipse cx="25" cy="19" rx="23" ry="17" stroke="rgba(255,255,255,0.12)" stroke-width="0.6" fill="none" />
+      <path d="M25 5C25 5 19 14 19 20c0 3.6 2.7 6.5 6 6.5s6-2.9 6-6.5C31 14 25 5 25 5z" fill="url(#brand-drop)" />
+      <path d="M25 5C25 5 19 14 19 20c0 3.6 2.7 6.5 6 6.5s6-2.9 6-6.5C31 14 25 5 25 5z" stroke="rgba(255,255,255,0.22)" stroke-width="0.5" fill="none" />
+      <ellipse cx="23" cy="19" rx="2" ry="3.2" fill="rgba(255,255,255,0.15)" transform="rotate(-12 23 19)" />
+      <defs>
+        <linearGradient id="brand-oval" x1="2" y1="2" x2="48" y2="36">
+          <stop offset="0%" stop-color="#5B8AF7" />
+          <stop offset="50%" stop-color="#8BAEE8" />
+          <stop offset="100%" stop-color="#4A70D0" />
+        </linearGradient>
+        <linearGradient id="brand-drop" x1="25" y1="5" x2="25" y2="26.5">
+          <stop offset="0%" stop-color="#7BA3F9" />
+          <stop offset="100%" stop-color="#4A70D0" />
+        </linearGradient>
+      </defs>
+    </svg>
+    <span class="brand-text">{props.content.contacts.company}</span>
+  </a>
+
+  <nav class="site-nav" id={`main-nav-${props.content.language}`} aria-label="Main navigation">
+    <a href="#services">{props.content.nav.services}</a>
+    <a href="#process">{props.content.nav.process}</a>
+    <a href="#advantages">{props.content.nav.advantages}</a>
+    <a href="#legal">{props.content.nav.legal}</a>
+    <a href="#contacts">{props.content.nav.contacts}</a>
+    <a class="language-switch" href={props.content.alternateLanguageUrl}>
+      {props.content.alternateLanguageLabel}
+    </a>
+  </nav>
+
+  <button
+    class="mobile-menu-button"
+    type="button"
+    aria-label="Menu"
+    aria-expanded="false"
+    aria-controls={`main-nav-${props.content.language}`}
+  >
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</header>

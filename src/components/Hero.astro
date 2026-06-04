@@ -1,0 +1,50 @@
+---
+import type { SiteContent } from "../data/content";
+
+type Props = {
+  content: SiteContent;
+};
+
+const props = Astro.props;
+---
+
+<div class="hero-wrap">
+  <section class="hero">
+    <div class="hero-content">
+      <p class="eyebrow">{props.content.hero.badge}</p>
+      <h1>{props.content.hero.title}</h1>
+      <p class="hero-description">{props.content.hero.description}</p>
+
+      <div class="hero-actions">
+        <a class="button button-primary" href="#contacts">{props.content.hero.primaryCta}</a>
+        <a class="button button-secondary" href="#process">{props.content.hero.secondaryCta}</a>
+      </div>
+    </div>
+
+    <aside class="hero-panel" aria-label="Service summary">
+      <div class="route-card">
+        <div class="route-line">
+          <span></span>
+          <strong>EU</strong>
+          <span></span>
+          <strong>BY</strong>
+          <span></span>
+        </div>
+        <p>
+          {props.content.language === "ru"
+            ? "Сопровождение топливных карт, обработка операций и расчеты с поставщиками для коммерческого транспорта в Беларуси."
+            : "Fuel card support, transaction processing and settlement coordination for commercial transport in Belarus."}
+        </p>
+      </div>
+
+      <div class="stats-grid">
+        {props.content.hero.stats.map((stat) => (
+          <div class="stat-card">
+            <strong>{stat.value}</strong>
+            <small>{stat.label}</small>
+          </div>
+        ))}
+      </div>
+    </aside>
+  </section>
+</div>
