@@ -744,14 +744,19 @@ h3 {
     backdrop-filter: blur(12px);
   }
 
-  .site-nav.open a {
+  .site-nav.open a:not(.language-switch) {
     display: block;
     padding: 10px 0;
   }
 
   .site-nav.open .language-switch {
-    width: 100%;
-    margin-top: 8px;
+    display: inline-flex;
+    width: auto;
+    min-width: 54px;
+    height: 42px;
+    margin-top: 14px;
+    padding: 0 18px;
+    align-self: center;
   }
 
   .mobile-menu-button {
