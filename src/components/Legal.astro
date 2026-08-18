@@ -20,10 +20,11 @@ const props = Astro.props;
         <path d="M7 1l6 3v4c0 3.5-2.5 5.5-6 6.5-3.5-1-6-3-6-6.5V4z" />
         <path d="M5 7l1.5 1.5L9.5 5" />
       </svg>
-      <span>{props.content.language === "ru" ? "Регулируемая деятельность" : "Regulated activity"}</span>
+      <span>{props.content.legal.badge}</span>
     </div>
     <p>{props.content.legal.description}</p>
-    <p class="legal-label">{props.content.language === "ru" ? "Мы обеспечиваем:" : "We provide:"}</p>
+    <p>{props.content.legal.residentNote}</p>
+    <p class="legal-label">{props.content.legal.itemsLabel}</p>
     <ul>
       {props.content.legal.items.map((item) => (
         <li>{item}</li>

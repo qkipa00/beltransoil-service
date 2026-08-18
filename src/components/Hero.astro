@@ -30,11 +30,7 @@ const props = Astro.props;
           <strong>BY</strong>
           <span></span>
         </div>
-        <p>
-          {props.content.language === "ru"
-            ? "Сопровождение топливных карт, обработка операций и расчеты с поставщиками для коммерческого транспорта в Беларуси."
-            : "Fuel card support, transaction processing and settlement coordination for commercial transport in Belarus."}
-        </p>
+        <p>{props.content.hero.routeSummary}</p>
       </div>
 
       <div class="stats-grid">

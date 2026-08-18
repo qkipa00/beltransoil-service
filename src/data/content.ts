@@ -28,7 +28,7 @@ export type SiteContent = {
   nav: {
     services: string;
     process: string;
-    advantages: string;
+    suppliers: string;
     legal: string;
     contacts: string;
   };
@@ -38,6 +38,7 @@ export type SiteContent = {
     description: string;
     primaryCta: string;
     secondaryCta: string;
+    routeSummary: string;
     stats: StatItem[];
   };
   services: {
@@ -52,16 +53,24 @@ export type SiteContent = {
     description: string;
     steps: ProcessStep[];
   };
-  advantages: {
+  suppliers: {
     eyebrow: string;
     title: string;
     description: string;
-    items: CardItem[];
+    goods: string[];
+    goodsNote: string;
+    panelTitle: string;
+    panelCount: string;
+    panelCaption: string;
+    items: string[];
   };
   legal: {
     eyebrow: string;
     title: string;
+    badge: string;
     description: string;
+    residentNote: string;
+    itemsLabel: string;
     items: string[];
   };
   contacts: {
@@ -84,6 +93,17 @@ export type SiteContent = {
   };
 };
 
+/** Legal entity names of the suppliers; not translated in either language. */
+const supplierNames = [
+  "ООО «ЛУКОЙЛ Белнефтепродукт»",
+  "ОДО «АСТОРЕЙДИНГ»",
+  "ООО «ТриДКапитал»",
+  "ООО «Сервисный центр ВЕСТА»",
+  "СООО «БРЕСТВНЕШТРАНС»",
+  "СООО «Юнайтед Компани»",
+  "ООО «Блок»",
+];
+
 export const ruContent: SiteContent = {
   language: "ru",
   alternateLanguageUrl: "/en",
@@ -99,7 +119,7 @@ export const ruContent: SiteContent = {
   nav: {
     services: "Услуги",
     process: "Как это работает",
-    advantages: "Преимущества",
+    suppliers: "Товары и поставщики",
     legal: "Правовая основа",
     contacts: "Контакты",
   },
@@ -110,6 +130,8 @@ export const ruContent: SiteContent = {
       "БелТрансОйл-Сервис помогает иностранным транспортным компаниям организовать оплату топлива, сопровождение топливных карт и расчёты с поставщиками на территории Республики Беларусь.",
     primaryCta: "Получить консультацию",
     secondaryCta: "Как это работает",
+    routeSummary:
+      "Сопровождение топливных карт, обработка операций и расчёты с поставщиками для коммерческого транспорта в Беларуси.",
     stats: [
       {
         value: "B2B",
@@ -181,39 +203,33 @@ export const ruContent: SiteContent = {
       },
     ],
   },
-  advantages: {
-    eyebrow: "Преимущества",
-    title: "Почему это удобно",
+  suppliers: {
+    eyebrow: "Товары и поставщики",
+    title: "Что можно оплатить топливной картой",
     description:
-      "Сервис снижает ручную работу, упрощает оплату топлива в рейсе и даёт компании больше контроля над расходами автопарка.",
-    items: [
-      {
-        title: "Меньше ручных расчётов",
-        description:
-          "Водителю не нужно решать вопрос оплаты топлива на каждой заправке отдельно.",
-      },
-      {
-        title: "Контроль лимитов",
-        description:
-          "Компания может ограничивать расходы и отслеживать операции по транспорту.",
-      },
-      {
-        title: "Локальное сопровождение",
-        description:
-          "Белорусская компания взаимодействует с местными поставщиками и сервисной инфраструктурой.",
-      },
-      {
-        title: "Понятно для бухгалтерии",
-        description:
-          "Операции фиксируются и могут использоваться для внутреннего учёта и анализа затрат.",
-      },
+      "Ниже приведены сведения о категориях товаров, работ и услуг, оплата которых возможна с использованием топливных карт на территории Республики Беларусь, а также перечень поставщиков, осуществляющих отпуск таких товаров, работ и услуг.",
+    goods: [
+      "Дизельное топливо и бензин всех марок",
+      "Услуги мойки и стоянки",
+      "Услуги по таможенному оформлению в местах перегрузки грузов",
     ],
+    goodsNote:
+      "Оплата возможна по топливным картам иностранных эмитентов, операции по которым мы обслуживаем.",
+    panelTitle: "Поставщики",
+    panelCount: "7 организаций",
+    panelCaption:
+      "Отпуск товаров, работ и услуг по топливным картам иностранных эмитентов осуществляют следующие организации.",
+    items: supplierNames,
   },
   legal: {
     eyebrow: "Правовая основа",
     title: "Работа в рамках законодательства",
+    badge: "Регулируемая деятельность",
     description:
       "Оборот топливных карт на территории Республики Беларусь регулируется профильными нормативными актами, включая Указ Президента Республики Беларусь №40 от 6 февраля 2020 года «О топливных картах».",
+    residentNote:
+      "БелТрансОйл-Сервис — резидент Республики Беларусь, юридическое лицо, осуществляющее сбор, обработку и передачу информации об операциях с использованием топливных карт нерезидентов — эмитентов топливных карт. Сведения о нерезидентах — эмитентах топливных карт, информацию об операциях с использованием которых мы обрабатываем, мы размещаем и поддерживаем в актуальном состоянии на этом сайте.",
+    itemsLabel: "Мы обеспечиваем:",
     items: [
       "договорное взаимодействие с клиентами и партнёрами",
       "операционное сопровождение топливных карт",
@@ -237,8 +253,8 @@ export const ruContent: SiteContent = {
     messagePlaceholder: "Кратко опишите задачу",
     submit: "Отправить заявку",
     note: "Сейчас заявка будет подготовлена на сайте. Отправку на email подключим после выбора почтового провайдера.",
-    successTitle: "Заявка подготовлена",
-    successMessage: "Мы сохранили данные в форме. Отправку на email подключим на следующем этапе.",
+    successTitle: "Заявка отправлена",
+    successMessage: "Мы свяжемся с вами в течение одного рабочего дня.",
   },
 };
 
@@ -257,7 +273,7 @@ export const enContent: SiteContent = {
   nav: {
     services: "Services",
     process: "How it works",
-    advantages: "Benefits",
+    suppliers: "Goods and suppliers",
     legal: "Legal basis",
     contacts: "Contacts",
   },
@@ -268,6 +284,8 @@ export const enContent: SiteContent = {
       "BelTransOil-Service helps foreign transport companies organize fuel payments, fuel card support and settlement operations with fuel suppliers in the Republic of Belarus.",
     primaryCta: "Request consultation",
     secondaryCta: "How it works",
+    routeSummary:
+      "Fuel card support, transaction processing and settlement coordination for commercial transport in Belarus.",
     stats: [
       {
         value: "B2B",
@@ -330,7 +348,7 @@ export const enContent: SiteContent = {
       {
         title: "Card connection",
         description:
-          "The client’s vehicles are connected to the agreed service mechanism through fuel cards.",
+          "The client's vehicles are connected to the agreed service mechanism through fuel cards.",
       },
       {
         title: "Refueling on route",
@@ -339,39 +357,33 @@ export const enContent: SiteContent = {
       },
     ],
   },
-  advantages: {
-    eyebrow: "Benefits",
-    title: "Why it is convenient",
+  suppliers: {
+    eyebrow: "Goods and suppliers",
+    title: "What can be paid for with a fuel card",
     description:
-      "The service reduces manual work, simplifies fuel payment on route and gives the company more control over fleet expenses.",
-    items: [
-      {
-        title: "Less manual payment work",
-        description:
-          "Drivers do not need to solve fuel payment issues separately at every station.",
-      },
-      {
-        title: "Limit control",
-        description:
-          "The company can control expenses and track operations by vehicle.",
-      },
-      {
-        title: "Local support",
-        description:
-          "A Belarus-based company works with local suppliers and service infrastructure.",
-      },
-      {
-        title: "Clear for accounting",
-        description:
-          "Operations are recorded and can be used for internal accounting and cost analysis.",
-      },
+      "Below is information on the categories of goods, works and services that may be paid for using fuel cards in the Republic of Belarus, together with the list of suppliers that release such goods, works and services.",
+    goods: [
+      "Diesel fuel and all grades of gasoline",
+      "Vehicle wash and parking services",
+      "Customs clearance services at cargo transshipment locations",
     ],
+    goodsNote:
+      "Payment is available with fuel cards of foreign issuers whose transactions we service.",
+    panelTitle: "Suppliers",
+    panelCount: "7 organizations",
+    panelCaption:
+      "The following organizations release goods, works and services under fuel cards of foreign issuers.",
+    items: supplierNames,
   },
   legal: {
     eyebrow: "Legal basis",
     title: "Operating within Belarusian legislation",
+    badge: "Regulated activity",
     description:
-      "Fuel card circulation in the Republic of Belarus is regulated by applicable legal acts, including Presidential Decree No. 40 dated February 6, 2020, “On Fuel Cards”.",
+      "Fuel card circulation in the Republic of Belarus is regulated by applicable legal acts, including Presidential Decree No. 40 dated February 6, 2020, «On Fuel Cards».",
+    residentNote:
+      "BelTransOil-Service is a resident legal entity of the Republic of Belarus that collects, processes and transmits information on transactions using fuel cards of non-resident fuel card issuers. We publish and keep up to date on this website the information about the non-resident fuel card issuers whose transaction data we process.",
+    itemsLabel: "We provide:",
     items: [
       "contractual cooperation with clients and partners",
       "operational fuel card support",
@@ -395,7 +407,7 @@ export const enContent: SiteContent = {
     messagePlaceholder: "Briefly describe your request",
     submit: "Send request",
     note: "For now, the request is prepared on the site. Email delivery will be connected after choosing a mail provider.",
-    successTitle: "Request prepared",
-    successMessage: "The form data is ready. Email delivery will be connected in the next step.",
+    successTitle: "Request submitted",
+    successMessage: "We will contact you within one business day.",
   },
 };

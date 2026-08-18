@@ -1,0 +1,41 @@
+---
+import type { SiteContent } from "../data/content";
+
+type Props = {
+  content: SiteContent;
+};
+
+const props = Astro.props;
+---
+
+<section class="section" id="suppliers">
+  <div class="section-heading">
+    <p class="eyebrow eyebrow-underline">{props.content.suppliers.eyebrow}</p>
+    <h2>{props.content.suppliers.title}</h2>
+    <p>{props.content.suppliers.description}</p>
+  </div>
+
+  <div class="goods-tiles">
+    {props.content.suppliers.goods.map((item, index) => (
+      <article class="goods-tile">
+        <span class="tile-idx">{String(index + 1).padStart(2, "0")}</span>
+        <h4>{item}</h4>
+      </article>
+    ))}
+  </div>
+
+  <p class="goods-note">{props.content.suppliers.goodsNote}</p>
+
+  <div class="suppliers-panel">
+    <div class="suppliers-head">
+      <h4>{props.content.suppliers.panelTitle}</h4>
+      <span>{props.content.suppliers.panelCount}</span>
+    </div>
+    <p class="suppliers-caption">{props.content.suppliers.panelCaption}</p>
+    <ul class="suppliers-grid">
+      {props.content.suppliers.items.map((item) => (
+        <li>{item}</li>
+      ))}
+    </ul>
+  </div>
+</section>
