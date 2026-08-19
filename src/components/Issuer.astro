@@ -1,0 +1,66 @@
+---
+import type { SiteContent } from "../data/content";
+
+type Props = {
+  content: SiteContent;
+};
+
+const props = Astro.props;
+---
+
+<section class="section section-muted" id="issuer">
+  <div class="section-heading">
+    <p class="eyebrow eyebrow-underline">{props.content.issuer.eyebrow}</p>
+    <h2>{props.content.issuer.title}</h2>
+    <p>{props.content.issuer.description}</p>
+  </div>
+
+  <ul class="issuer-figures">
+    {props.content.issuer.figures.map((figure) => (
+      <li class="issuer-fig">
+        <b>{figure.value}</b>
+        <span>{figure.label}</span>
+      </li>
+    ))}
+  </ul>
+
+  <h3 class="issuer-sub">{props.content.issuer.capsTitle}</h3>
+  <ul class="issuer-caps">
+    {props.content.issuer.caps.map((cap, index) => (
+      <li class="issuer-cap">
+        <i>{String(index + 1).padStart(2, "0")}</i>
+        <strong>{cap.title}</strong>
+        <span>{cap.description}</span>
+      </li>
+    ))}
+  </ul>
+
+  <div class="issuer-details">
+    {props.content.issuer.detailGroups.map((group) => (
+      <div class="idet-col">
+        <h5>{group.heading}</h5>
+        <dl>
+          {group.rows.map((row) => (
+            <div>
+              <dt>{row.label}</dt>
+              <dd>
+                {row.href ? (
+                  <a
+                    href={row.href}
+                    dir={row.ltr ? "ltr" : undefined}
+                    target={row.external ? "_blank" : undefined}
+                    rel={row.external ? "noopener" : undefined}
+                  >
+                    {row.value}
+                  </a>
+                ) : (
+                  row.value
+                )}
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    ))}
+  </div>
+</section>

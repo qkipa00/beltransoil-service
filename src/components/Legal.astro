@@ -22,13 +22,8 @@ const props = Astro.props;
       </svg>
       <span>{props.content.legal.badge}</span>
     </div>
-    <p>{props.content.legal.description}</p>
-    <p>{props.content.legal.residentNote}</p>
-    <p class="legal-label">{props.content.legal.itemsLabel}</p>
-    <ul>
-      {props.content.legal.items.map((item) => (
-        <li>{item}</li>
-      ))}
-    </ul>
+    {props.content.legal.paragraphs.map((paragraph) => (
+      <p>{paragraph}</p>
+    ))}
   </div>
 </section>

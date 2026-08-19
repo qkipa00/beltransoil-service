@@ -12,7 +12,7 @@ const props = Astro.props;
   <div class="section-heading">
     <p class="eyebrow eyebrow-underline">{props.content.services.eyebrow}</p>
     <h2>{props.content.services.title}</h2>
-    <p>{props.content.services.description}</p>
+    <p set:html={props.content.services.descriptionHtml} />
   </div>
 
   <div class="cards-grid">

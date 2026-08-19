@@ -17,9 +17,13 @@ const props = Astro.props;
 
       <div class="contact-details">
         <strong>{props.content.contacts.company}</strong>
-        <span>{props.content.contacts.address}</span>
-        <a href={`tel:${props.content.contacts.phone.replaceAll(" ", "")}`}>{props.content.contacts.phone}</a>
-        <a href={`mailto:${props.content.contacts.email}`}>{props.content.contacts.email}</a>
+
+        {props.content.contacts.details.map((row) => (
+          <div class="row">
+            <span class="row-label">{row.label}</span>
+            {row.href ? <a href={row.href}>{row.value}</a> : <span>{row.value}</span>}
+          </div>
+        ))}
       </div>
     </div>
 
