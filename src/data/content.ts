@@ -85,7 +85,6 @@ export type SiteContent = {
   contacts: {
     eyebrow: string;
     title: string;
-    description: string;
     company: string;
     address: string;
     phone: string;
@@ -284,8 +283,6 @@ export const ruContent: SiteContent = {
   contacts: {
     eyebrow: "Контакты",
     title: "Свяжитесь с нами",
-    description:
-      "Оставьте заявку, и мы ответим на вопросы по операциям с топливными картами в Беларуси.",
     company: "БелТрансОйл-Сервис",
     address: "Республика Беларусь, г. Брест",
     phone: "+375 (29) 363-00-00",
@@ -301,7 +298,7 @@ export const ruContent: SiteContent = {
     ],
     ctaTitle: "Напишите нам",
     ctaDescription:
-      "Расскажите о вашей задаче — ответим в течение одного рабочего дня.",
+      "Оставьте заявку, и мы ответим на вопросы по операциям с топливными картами в Беларуси.",
     ctaButton: "Написать на почту",
     mailSubject: "Заявка на консультацию",
   },
@@ -476,8 +473,6 @@ export const enContent: SiteContent = {
   contacts: {
     eyebrow: "Contacts",
     title: "Contact us",
-    description:
-      "Send a request, and we will answer your questions about fuel card transactions in Belarus.",
     company: "BelTransOil-Service",
     address: "Brest, Republic of Belarus",
     phone: "+375 (29) 363-00-00",
@@ -493,7 +488,7 @@ export const enContent: SiteContent = {
     ],
     ctaTitle: "Write to us",
     ctaDescription:
-      "Tell us about your request — we will reply within one business day.",
+      "Send a request, and we will answer your questions about fuel card transactions in Belarus.",
     ctaButton: "Send an email",
     mailSubject: "Consultation request",
   },
