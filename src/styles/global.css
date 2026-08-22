@@ -815,15 +815,22 @@ h3 {
 .contact-grid {
   display: grid;
   grid-template-columns: 0.9fr 1.1fr;
-  align-items: start;
-  gap: 54px;
+  grid-template-areas:
+    "heading ."
+    "details cta";
+  gap: 0 54px;
 }
 
-.contact-copy p:not(.eyebrow) {
-  margin-bottom: 28px;
-  color: var(--fg-muted);
-  font-size: 17px;
-  line-height: 1.7;
+.contact-heading {
+  grid-area: heading;
+}
+
+.contact-details {
+  grid-area: details;
+}
+
+.contact-cta {
+  grid-area: cta;
 }
 
 .contact-details {
@@ -870,7 +877,7 @@ h3 {
 .contact-cta {
   display: grid;
   justify-items: center;
-  align-self: center;
+  align-content: center;
   padding: 48px 40px;
   border: 1px solid var(--border);
   border-radius: var(--r-lg);
@@ -1000,6 +1007,11 @@ h3 {
 
   .contact-grid {
     grid-template-columns: 1fr;
+    grid-template-areas:
+      "heading"
+      "details"
+      "cta";
+    gap: 28px 0;
   }
 
   .issuer-caps {
