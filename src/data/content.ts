@@ -91,15 +91,11 @@ export type SiteContent = {
     phone: string;
     email: string;
     details: DetailRow[];
-    formTitle: string;
-    namePlaceholder: string;
-    companyPlaceholder: string;
-    emailPlaceholder: string;
-    messagePlaceholder: string;
-    submit: string;
-    note: string;
-    successTitle: string;
-    successMessage: string;
+    ctaTitle: string;
+    ctaDescription: string;
+    ctaButton: string;
+    /** Prefilled subject line so enquiries from the site are easy to spot. */
+    mailSubject: string;
   };
 };
 
@@ -303,15 +299,11 @@ export const ruContent: SiteContent = {
       { label: "Телефон", value: "+375 (29) 363-00-00", href: "tel:+375293630000" },
       { label: "Электронная почта", value: "mart311930@gmail.com", href: "mailto:mart311930@gmail.com" },
     ],
-    formTitle: "Заявка на консультацию",
-    namePlaceholder: "Ваше имя",
-    companyPlaceholder: "Компания",
-    emailPlaceholder: "Email или телефон",
-    messagePlaceholder: "Кратко опишите задачу",
-    submit: "Отправить заявку",
-    note: "Сейчас заявка будет подготовлена на сайте. Отправку на email подключим после выбора почтового провайдера.",
-    successTitle: "Заявка отправлена",
-    successMessage: "Мы свяжемся с вами в течение одного рабочего дня.",
+    ctaTitle: "Напишите нам",
+    ctaDescription:
+      "Расскажите о вашей задаче — ответим в течение одного рабочего дня.",
+    ctaButton: "Написать на почту",
+    mailSubject: "Заявка на консультацию",
   },
 };
 
@@ -499,14 +491,10 @@ export const enContent: SiteContent = {
       { label: "Phone", value: "+375 (29) 363-00-00", href: "tel:+375293630000" },
       { label: "Email", value: "mart311930@gmail.com", href: "mailto:mart311930@gmail.com" },
     ],
-    formTitle: "Consultation request",
-    namePlaceholder: "Your name",
-    companyPlaceholder: "Company",
-    emailPlaceholder: "Email or phone",
-    messagePlaceholder: "Briefly describe your request",
-    submit: "Send request",
-    note: "For now, the request is prepared on the site. Email delivery will be connected after choosing a mail provider.",
-    successTitle: "Request submitted",
-    successMessage: "We will contact you within one business day.",
+    ctaTitle: "Write to us",
+    ctaDescription:
+      "Tell us about your request — we will reply within one business day.",
+    ctaButton: "Send an email",
+    mailSubject: "Consultation request",
   },
 };

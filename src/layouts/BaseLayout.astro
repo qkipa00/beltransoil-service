@@ -76,41 +76,6 @@ const structuredData = {
           });
         });
       });
-
-      document.querySelectorAll(".contact-form").forEach((form) => {
-        const startedAt = form.querySelector("[data-started-at]");
-        const fields = form.querySelector(".form-fields");
-        const success = form.querySelector(".form-success");
-        const error = form.querySelector(".form-error");
-        const started = Date.now();
-        if (startedAt) startedAt.value = String(started);
-
-        form.addEventListener("submit", (event) => {
-          event.preventDefault();
-          if (error) error.textContent = "";
-
-          const honeypot = form.querySelector('input[name="website"]');
-          if (honeypot && honeypot.value.trim() !== "") return;
-
-          if (!form.checkValidity()) {
-            form.reportValidity();
-            return;
-          }
-
-          if (Date.now() - started < 2500) {
-            if (error) {
-              error.textContent =
-                document.documentElement.lang === "ru"
-                  ? "Проверьте поля и отправьте заявку еще раз."
-                  : "Please check the fields and submit the request again.";
-            }
-            return;
-          }
-
-          fields?.classList.add("hide");
-          success?.classList.add("show");
-        });
-      });
     </script>
   </body>
 </html>
